@@ -1,25 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-import Example from "./components/Example";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   return (
-    <View className="h-full items-center justify-center">
-      <HomeScreen />
-      <Example/>
-      <Example/>
-      <Example/>
-      <Example/>
-    </View>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <HomeScreen />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
